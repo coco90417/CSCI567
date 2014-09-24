@@ -1,4 +1,4 @@
-[train_data, train_label, test_data, test_label, validation_data, validation_label] = loadfile()
+function[train_data, train_label, test_data, test_label, validation_data, validation_label] = loadfile()
 
 % load files
 
