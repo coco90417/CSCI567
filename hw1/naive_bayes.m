@@ -19,7 +19,7 @@ xparameters = [sum(train_data(train_label==1,:))/size(train_label(train_label==1
 xparameters(xparameters==0)=0.1;
 yparameters = [size(train_label(train_label==1),1)/size(train_label,1), size(train_label(train_label==2),1)/size(train_label,1), size(train_label(train_label==3),1)/size(train_label,1), size(train_label(train_label==4),1)/size(train_label,1)];
 logXparameters = log(xparameters);
-logYparameters = log(xparameters);
+logYparameters = log(yparameters);
 
 %  train_accu: accuracy of classifying train_data
 logEstimated = (train_data * transpose(logXparameters)+ repmat(logYparameters,size(train_label,1),1));
