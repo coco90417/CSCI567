@@ -2,6 +2,9 @@ function [] = decision_tree(filename, k)
 
 % CSCI 576 2014 Fall, Homework 1
 
+filename = 'testing_20.pdf';
+k = 20;
+
 boundary = matfile('boundary.mat');
 
 
