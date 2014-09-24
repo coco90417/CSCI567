@@ -36,7 +36,7 @@ train_accu = size(train_data(estimatedClass==train_label),1)/size(train_data,1);
 total_data = [train_data; new_data];
 distance = pdist(total_data);
 distanceMatrix = squareform(distance);
-distanceMatrix = distanceMatrix((size(train_data,1)+1):size(total_data,1), 1:size(train_datas,1));
+distanceMatrix = distanceMatrix((size(train_data,1)+1):size(total_data,1), 1:size(train_data,1));
 sortedDistance = sort(distanceMatrix, 2);
 
 for i=1:size(new_data,1)
