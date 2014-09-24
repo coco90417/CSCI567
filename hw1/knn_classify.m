@@ -15,3 +15,36 @@ function [new_accu, train_accu] = knn_classify(train_data, train_label, new_data
 %  strategy)
 %
 % CSCI 576 2014 Fall, Homework 1
+
+
+% modeling
+distance = pdist(train_data);
+distanceMatrix = squareform(distance);
+distanceMatrix(distanceMatrix==0)=inf;
+sortedDistance = sort(distanceMatrix, 2);
+
+for i=1:size(train_data,1)
+tempIndex = find(distanceMatrix(i,:)<=sortedDistance(i,k));
+finalIndex(i,1:k)= tempIndex(1:k);
+end
+finalIndex=finalIndex(:,1:k);
+
+estimatedClass=mode(train_label(finalIndex),2);
+train_accu = size(train_data(estimatedClass==train_label),1)/size(train_data,1);
+
+% testing
+total_data = [train_data; new_data];
+distance = pdist(total_data);
+distanceMatrix = squareform(distance);
+distanceMatrix = distanceMatrix((size(train_data,1)+1):size(total_data,1), (size(train_data,1)+1):size(total_data,1));
+sortedDistance = sort(distanceMatrix, 2);
+
+for i=1:size(new_data,1)
+tempIndex = find(distanceMatrix(i,:)<=sortedDistance(i,k));
+finalIndexTest(i,1:k)= tempIndex(1:k);
+end
+finalIndexTest=finalIndexTest(:,1:k);
+
+estimatedClass=mode(new_data(finalIndexTest),2);
+new_accu = size(new_data(estimatedClass==new_label),1)/size(new_data,1);
+

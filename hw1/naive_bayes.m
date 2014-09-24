@@ -25,12 +25,10 @@ logYparameters = log(yparameters);
 logEstimated = (train_data * transpose(logXparameters)+ repmat(logYparameters,size(train_label,1),1));
 estimated = exp(logEstimated);
 [estimatedMaxVal estimatedMaxInd] = max(estimated,[],2);
-size(train_data(estimatedMaxInd==train_label),1);
 train_accu = size(train_data(estimatedMaxInd==train_label),1)/size(train_data,1);
 
 %  new_accu: accuracy of classifying new_data
 logEstimated = (new_data * transpose(logXparameters)+ repmat(logYparameters,size(new_label,1),1));
 estimated = exp(logEstimated);
 [estimatedMaxVal estimatedMaxInd] = max(estimated,[],2);
-size(new_data(estimatedMaxInd==new_label),1);
 new_accu = size(new_data(estimatedMaxInd==new_label),1)/size(new_data,1);
