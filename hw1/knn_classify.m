@@ -45,6 +45,6 @@ finalIndexTest(i,1:k)= tempIndex(1:k);
 end
 finalIndexTest=finalIndexTest(:,1:k);
 
-estimatedClass=mode(new_data(finalIndexTest),2);
+estimatedClass=mode(new_label(finalIndexTest),2);
 new_accu = size(new_data(estimatedClass==new_label),1)/size(new_data,1);
 
