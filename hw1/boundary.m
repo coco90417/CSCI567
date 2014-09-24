@@ -11,6 +11,9 @@ train_label = boundary.labels;
 for j = 1:100
 temp_matrix = ones(100,2)* 0.01 * j-0.005;
 temp_matrix(1:100,2) = [1:100]* 0.01-0.005;
+x(((j-1)*100+1):(j*100)) = temp_matrix(1:100,1);
+y(((j-1)*100+1):(j*100)) = temp_matrix(1:100,2);
+s(((j-1)*100+1):(j*100)) = ones(100,1) * 20;
 new_data = temp_matrix;
 total_data = [train_data; new_data];
 distance = pdist(total_data);
@@ -23,10 +26,8 @@ finalIndexTest(i,1:k)= tempIndex(1:k);
 end
 finalIndexTest=finalIndexTest(:,1:k);
 estimatedClass=mode(train_label(finalIndexTest),2);
-plot_class(j:(j+99)) = estimatedClass;
-x(j:(j+99)) = ones(100,1)* 0.01 * j-0.005;
-y(j:(j+99)) = [1:100]* 0.01-0.005;
-s(j:(j+99)) = ones(100,1) * 20;
+plot_class(((j-1)*100+1):(j*100)) = estimatedClass;
+
 
 end
 
