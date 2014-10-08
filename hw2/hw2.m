@@ -22,8 +22,8 @@ disp('2')
 
 %%%%%%%%%% 3.a
 disp('a. figure')
-[spam_train_data_cross_entropy, spam_test_data_cross_entropy, spam_l2norm] = gradientdescent(spam_train_data, spam_train_label, spam_test_data, spam_test_label);
-[iono_train_data_cross_entropy, iono_test_data_cross_entropy, iono_l2norm] = gradientdescent(iono_train_data, iono_train_label, iono_test_data, iono_test_label);
+[spam_train_data_cross_entropy, spam_test_data_cross_entropy, spam_l2norm, spam_w_out] = gradientdescent(spam_train_data, spam_train_label, spam_test_data, spam_test_label);
+[iono_train_data_cross_entropy, iono_test_data_cross_entropy, iono_l2norm, iono_w_out] = gradientdescent(iono_train_data, iono_train_label, iono_test_data, iono_test_label);
 
 filename = '3a_spam.pdf';
 h = figure;
@@ -210,14 +210,9 @@ legend('training', 'testing');
 saveas(h, filename);
 
 
-
-%%%%%%%%%%%%%%%%%%%% (5) %%%%%%%%%%%%%%%%%%%%%%
-
-
-
-
 %%%%%%%%%%%%%%%%%%%% (6) %%%%%%%%%%%%%%%%%%%%%%
-
+[nt_spam_train_data_cross_entropy, nt_spam_test_data_cross_entropy, nt_spam_l2norm] = newtonmethod(spam_train_data, spam_train_label, spam_test_data, spam_test_label, spam_w_out);
+[nt_iono_train_data_cross_entropy, nt_iono_test_data_cross_entropy, nt_iono_l2norm] = newtonmethod(iono_train_data, iono_train_label, iono_test_data, iono_test_label, iono_w_out)
 
 
 
