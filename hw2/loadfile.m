@@ -4,11 +4,13 @@ function[train_data, train_label, test_data, test_label] = loadfile(k)
 
 if k = 'spam'
 train_data_file_TP = 'hw2_data/spam/train/spam/train_spam.final';
-train_data_TP = importdata(train_data_file_TP,' ', 1);
-
-train_data_label =
-train_data_file = 'hw2_data/spam/train/spam/train_spam.final';
-train_data_label =
+train_data_TP = importdata(train_data_file_TP);
+train_data_file_TN = 'hw2_data/spam/train/ham/train_ham.final';
+train_data_TN = importdata(train_data_file_TN);
+test_data_file_TP = 'hw2_data/spam/test/spam/test_spam.final';
+test_data_TP = importdata(test_data_file_TP);
+test_data_file_TN = 'hw2_data/spam/test/ham/test_ham.final';
+test_data_TN = importdata(test_data_file_TN);
 
 
 
