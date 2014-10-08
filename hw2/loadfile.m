@@ -20,11 +20,11 @@ else
 train_data_file = 'hw2_data/ionosphere/ionosphere_train.dat.final';
 train_data_raw = importdata(train_data_file);
 train_data = train_data_raw(:,1:34);
-train_data_label = train_data_raw(:,35);
+train_label = train_data_raw(:,35);
 test_data_file = 'hw2_data/ionosphere/ionosphere_test.dat.final';
 test_data_raw = importdata(test_data_file);
 test_data = test_data_raw(:,1:34);
-test_data_label = test_data_raw(:,35);
+test_label = test_data_raw(:,35);
 
 end
 
