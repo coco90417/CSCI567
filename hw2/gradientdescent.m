@@ -6,7 +6,6 @@ function[train_data_cross_entropy, test_data_cross_entropy, l2norm] = gradientde
 % initialization
 w = zeros(size(train_data,2), 1);
 b = 0.1;
-
 new_train_data = [ones(size(train_data, 1),1) train_data];
 new_test_data = [ones(size(test_data, 1),1) test_data];
 lambda = 0:0.05:0.5;
@@ -19,11 +18,12 @@ sigma = 1./(1 + exp(-(new_train_data * [b; w])));
 for i = 1:size(lambda,2)
 for j = 1:size(stepsize,2)
 for k = 1:size(T,2)
-    gradient = transpose(new_train_data) * (sigma-train_label) + 2*lambda(i)*[0; w];
+    gradient = transpose(new_train_data) * (sigma - train_label) + 2*lambda(i)*[0; w];
     temp_w = [b; w];
     temp_w = temp_w - stepsize(j) * gradient;
     b = temp_w(1);
     w = temp_w(2:size(temp_w,1));
+    sigma = 1./(1 + exp(-(new_train_data * [b; w])));
     sigma_train = 1./(1 + exp(-(new_train_data * [b; w])));
     sigma_test = 1./(1 + exp(-(new_test_data * [b; w])));
     sigma_train(sigma_train>1-10^(-16)) = 1-10^(-16);
