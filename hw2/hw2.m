@@ -1,6 +1,9 @@
-function [] = decision_tree(filename, k)
+function [] = load_data(filename, k)
 
-% CSCI 576 2014 Fall, Homework 1
+% CSCI 576 2014 Fall, Homework 2
+
+if k = 'ionsphere'
+
 
 filename = 'testing_20.pdf';
 k = 20;
