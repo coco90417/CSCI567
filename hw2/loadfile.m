@@ -25,3 +25,5 @@ test_data_file = 'hw2_data/ionosphere/ionosphere_test.dat.final';
 test_data_raw = importdata(test_data_file);
 test_data = test_data_raw(:,1:34);
 test_data_label = test_data_raw(:,35);
+
+end
