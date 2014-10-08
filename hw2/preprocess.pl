@@ -19,6 +19,7 @@ my $email_train_spam = "hw2_data/spam/train/spam/train_spam";
 my $email_train_ham = "hw2_data/spam/train/ham/train_ham";
 my $email_test_spam = "hw2_data/spam/test/spam/test_spam";
 my $email_test_ham = "hw2_data/spam/test/ham/test_ham";
+my $header = "hw2_data/spam/header";
 &emailPreprocess($email_train_spam);
 &emailPreprocess($email_train_ham);
 &emailPreprocess($email_test_spam);
@@ -49,10 +50,11 @@ sub emailPreprocess {
     my $outfile = $file . ".final";
     open(LI, "$file") or die "cannot open file $file\n";
     open(OUT, ">$outfile") or die "cannot open file $outfile\n";
+    open(HEADER, ">$header") or die "cannot open header file $header\n";
     my @sortkeysVocab = sort keys %vocab;
     my $printSortkeys = join(" ", @sortkeysVocab);
     my $lastelementIndex = $#sortkeysVocab;
-    print OUT "$printSortkeys\n";
+    print HEADER "$printSortkeys\n";
     while(<LI>){
         chomp;
         my %localVocab;

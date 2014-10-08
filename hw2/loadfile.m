@@ -2,23 +2,32 @@ function[train_data, train_label, test_data, test_label] = loadfile(k)
 
 % load files
 
-if k = 'ionosphere'
-formatSpec = '%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%*s%*[\n]';
-train_filename = './hw2_data/ionosphere/ionosphere_train.dat';
-fid=fopen(train_filename, 'r');
-train_data = textscan(fid, formatSpec, 'delimiter', ',');
-fclose(fid);
-train_data=train_data(:,1:34);
-train_label = train_data(:,35);
-test_filename = './hw2_data/ionosphere/ionosphere_test.dat';
-test_data = importdata(test_filename, ',');
-test_data= test_data(:,1:34);
-test_label = test_data(:,35);
+if k = 'spam'
+train_data_file_TP = 'hw2_data/spam/train/spam/train_spam.final';
+train_data_TP = importdata(train_data_file_TP,' ', 1);
+
+train_data_label =
+train_data_file = 'hw2_data/spam/train/spam/train_spam.final';
+train_data_label =
 
 
-elsif k = 'spam'
-% load vocab
-vocab = textread('./hw2_data/spam/vocab.dat');
-list = dir('./hw2_data/spam/train/spam');
 
-end
+my $email_train_spam = "hw2_data/spam/train/spam/train_spam";
+my $email_train_ham = "hw2_data/spam/train/ham/train_ham";
+my $email_test_spam = "hw2_data/spam/test/spam/test_spam";
+my $email_test_ham = "hw2_data/spam/test/ham/test_ham";
+
+else
+train_data_file = 'hw2_data/ionosphere/ionosphere_train.dat.final';
+train_data_label =
+train_data_file = 'hw2_data/ionosphere/ionosphere_test.dat.final';
+train_data_label =
+
+
+
+train_data = importdata(train_data_file);
+train_label = importdata(train_label_file);
+test_data = importdata(test_data_file);
+test_label = importdata(test_label_file);
+valid_data = importdata(validation_data_file);
+valid_label = importdata(validation_label_file);
