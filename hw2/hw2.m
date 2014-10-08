@@ -212,7 +212,32 @@ saveas(h, filename);
 
 %%%%%%%%%%%%%%%%%%%% (6) %%%%%%%%%%%%%%%%%%%%%%
 [nt_spam_train_data_cross_entropy, nt_spam_test_data_cross_entropy, nt_spam_l2norm] = newtonmethod(spam_train_data, spam_train_label, spam_test_data, spam_test_label, spam_w_out);
-[nt_iono_train_data_cross_entropy, nt_iono_test_data_cross_entropy, nt_iono_l2norm] = newtonmethod(iono_train_data, iono_train_label, iono_test_data, iono_test_label, iono_w_out)
+[nt_iono_train_data_cross_entropy, nt_iono_test_data_cross_entropy, nt_iono_l2norm] = newtonmethod(iono_train_data, iono_train_label, iono_test_data, iono_test_label, iono_w_out);
+
+%%%%%%%%%% 6.a
+disp('a. fiure')
+filename = '6a_spam.pdf';
+h = figure;
+plot_spam_train_data_cross_entropy = nt_spam_train_data_cross_entropy;
+reshaped_plot_spam_train_data_cross_entropy = transpose(reshape(plot_spam_train_data_cross_entropy,  11, 50));
+plot(reshaped_plot_spam_train_data_cross_entropy);
+title('cross-entropy from 1-50 iterations for training data for spamsphere data(lamda=1)');
+xlabel('iterations');
+ylabel('cross-entropy');
+legend('stepsize = 0.001', 'stepsize = 0.01', 'stepsize = 0.05', 'stepsize = 0.1', 'stepsize = 0.5');
+saveas(h, filename);
+
+filename = '6a_iono.pdf';
+h = figure;
+plot_iono_train_data_cross_entropy = iono_train_data_cross_entropy(3,:,:);
+reshaped_plot_iono_train_data_cross_entropy = transpose(reshape(plot_iono_train_data_cross_entropy,  5, 50));
+plot(reshaped_plot_iono_train_data_cross_entropy);
+title('cross-entropy from 1-50 iterations for training data for ionosphere data(lamda=1)');
+xlabel('iterations');
+ylabel('cross-entropy');
+legend('stepsize = 0.001', 'stepsize = 0.01', 'stepsize = 0.05', 'stepsize = 0.1', 'stepsize = 0.5');
+saveas(h, filename);
+
 
 
 
