@@ -14,11 +14,11 @@ disp('1')
 loadheader(spam_train_data);
 
 %%%%%%%%%%%%%%%%%%%% (3) %%%%%%%%%%%%%%%%%%%%%%
-[train_data_cross_entropy, test_data_cross_entropy, l2norm] = gradiendescent(spam_train_data, spam_train_label, spam_test_data, spam_test_label);
+[spam_train_data_cross_entropy, spam_test_data_cross_entropy, spam_l2norm] = gradientdescent(spam_train_data, spam_train_label, spam_test_data, spam_test_label);
+[iono_train_data_cross_entropy, iono_test_data_cross_entropy, iono_l2norm] = gradientdescent(iono_train_data, iono_train_label, iono_test_data, iono_test_label);
 
 
 %%%%%%%%%%%%%%%%%%%% (4) %%%%%%%%%%%%%%%%%%%%%%
-
 
 
 
