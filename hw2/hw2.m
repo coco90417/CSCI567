@@ -56,7 +56,7 @@ disp('4')
 disp('figure')
 filename = '4a_spam.pdf';
 h = figure;
-plot_spam_train_data_cross_entropy = spam_train_data_cross_entropy(1,:,:);
+plot_spam_train_data_cross_entropy = spam_train_data_cross_entropy(3,:,:);
 reshaped_plot_spam_train_data_cross_entropy = transpose(reshape(plot_spam_train_data_cross_entropy,  size(stepsize,2), size(T,2)));
 plot(reshaped_plot_spam_train_data_cross_entropy);
 title('cross-entropy from 1-50 iterations for training data for spam data(lamda=1)');
@@ -65,22 +65,22 @@ ylabel('cross-entropy');
 legend('stepsize = 0.001', 'stepsize = 0.01', 'stepsize = 0.05', 'stepsize = 0.1', 'stepsize = 0.5');
 saveas(h, filename);
 disp('l2 norm')
-show_spam_l2norm = spam_l2norm(1,:,50);
+show_spam_l2norm = spam_l2norm(3,:,50);
 show_spam_l2norm
 
 
 filename = '4a_iono.pdf';
 h = figure;
-plot_iono_train_data_cross_entropy = iono_train_data_cross_entropy(1,:,:);
+plot_iono_train_data_cross_entropy = iono_train_data_cross_entropy(3,:,:);
 reshaped_plot_iono_train_data_cross_entropy = transpose(reshape(plot_iono_train_data_cross_entropy,  size(stepsize,2), size(T,2)));
 plot(reshaped_plot_iono_train_data_cross_entropy);
-title('cross-entropy from 1-50 iterations for training data for ionosphere data(no regularization)');
+title('cross-entropy from 1-50 iterations for training data for ionosphere data(lamda=1)');
 xlabel('iterations');
 ylabel('cross-entropy');
 legend('stepsize = 0.001', 'stepsize = 0.01', 'stepsize = 0.05', 'stepsize = 0.1', 'stepsize = 0.5');
 saveas(h, filename);
 disp('l2 norm')
-show_iono_l2norm = iono_l2norm(1,:,50);
+show_iono_l2norm = iono_l2norm(3,:,50);
 show_iono_l2norm
 
 

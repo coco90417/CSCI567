@@ -11,7 +11,7 @@ new_test_data = [ones(size(test_data, 1),1) test_data];
 lambda = 0:0.05:0.5;
 stepsize = [0.001, 0.01, 0.05, 0.1, 0.5];
 T = 1:1:50;
-sigma = 1./(1 + exp(-(new_train_data * [b; w])));
+sigma = 1./(ones(size(train_label,1),1)+ exp(-(new_train_data * [b; w])));
 
 
 % run
@@ -24,8 +24,8 @@ for k = 1:size(T,2)
     b = temp_w(1);
     w = temp_w(2:size(temp_w,1));
     sigma = 1./(1 + exp(-(new_train_data * [b; w])));
-    sigma_train = 1./(1 + exp(-(new_train_data * [b; w])));
-    sigma_test = 1./(1 + exp(-(new_test_data * [b; w])));
+    sigma_train = 1./(ones(size(train_label,1),1) + exp(-(new_train_data * [b; w])));
+    sigma_test = 1./(ones(size(test_label,1),1) + exp(-(new_test_data * [b; w])));
     sigma_train(sigma_train>1-10^(-16)) = 1-10^(-16);
     sigma_test(sigma_test>1-10^(-16)) = 1-10^(-16);
     sigma_train(sigma_train<10^(-16)) = 10^(-16);
