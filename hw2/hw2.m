@@ -221,28 +221,61 @@ h = figure;
 plot_spam_train_data_cross_entropy = nt_spam_train_data_cross_entropy;
 reshaped_plot_spam_train_data_cross_entropy = transpose(reshape(plot_spam_train_data_cross_entropy,  11, 50));
 plot(reshaped_plot_spam_train_data_cross_entropy);
-title('cross-entropy from 1-50 iterations for training data for spamsphere data(lamda=1)');
+title('cross-entropy from 1-50 iterations for training data for spamsphere data');
 xlabel('iterations');
 ylabel('cross-entropy');
-legend('stepsize = 0.001', 'stepsize = 0.01', 'stepsize = 0.05', 'stepsize = 0.1', 'stepsize = 0.5');
+legend('lambda = 0', 'lambda = 0.05', 'lambda = 0.1', 'lambda = 0.15', 'lambda = 0.2', 'lambda = 0.25', 'lambda = 0.3', 'lambda = 0.35', 'lambda = 0.4', 'lambda = 0.45', 'lambda = 0.5');
 saveas(h, filename);
 
 filename = '6a_iono.pdf';
 h = figure;
-plot_iono_train_data_cross_entropy = iono_train_data_cross_entropy(3,:,:);
-reshaped_plot_iono_train_data_cross_entropy = transpose(reshape(plot_iono_train_data_cross_entropy,  5, 50));
+plot_iono_train_data_cross_entropy = nt_iono_train_data_cross_entropy;
+reshaped_plot_iono_train_data_cross_entropy = transpose(reshape(plot_iono_train_data_cross_entropy,  11, 50));
 plot(reshaped_plot_iono_train_data_cross_entropy);
-title('cross-entropy from 1-50 iterations for training data for ionosphere data(lamda=1)');
+title('cross-entropy from 1-50 iterations for training data for ionosphere data');
 xlabel('iterations');
 ylabel('cross-entropy');
-legend('stepsize = 0.001', 'stepsize = 0.01', 'stepsize = 0.05', 'stepsize = 0.1', 'stepsize = 0.5');
+legend('lambda = 0', 'lambda = 0.05', 'lambda = 0.1', 'lambda = 0.15', 'lambda = 0.2', 'lambda = 0.25', 'lambda = 0.3', 'lambda = 0.35', 'lambda = 0.4', 'lambda = 0.45', 'lambda = 0.5');
+saveas(h, filename);
+
+%%%%%%%%%% 6.b
+disp('b. l2 norm')
+disp('spam data')
+show_spam_l2norm = nt_spam_l2norm(:,50);
+show_spam_l2norm
+disp('ionophere data')
+show_iono_l2norm = nt_iono_l2norm(:,50);
+show_iono_l2norm
+
+
+%%%%%%%%%%% 6.c
+
+filename = '6c_spam.pdf';
+h = figure;
+plot_spam_train_data_cross_entropy = nt_spam_train_data_cross_entropy;
+reshaped_plot_spam_train_data_cross_entropy = transpose(reshape(plot_spam_train_data_cross_entropy,  11, 50));
+plot(reshaped_plot_spam_train_data_cross_entropy);
+title('cross-entropy from 1-50 iterations for training data for spamsphere data');
+xlabel('iterations');
+ylabel('cross-entropy');
+legend('lambda = 0', 'lambda = 0.05', 'lambda = 0.1', 'lambda = 0.15', 'lambda = 0.2', 'lambda = 0.25', 'lambda = 0.3', 'lambda = 0.35', 'lambda = 0.4', 'lambda = 0.45', 'lambda = 0.5');
+saveas(h, filename);
+
+filename = '6c_iono.pdf';
+h = figure;
+plot_iono_train_data_cross_entropy = nt_iono_train_data_cross_entropy;
+reshaped_plot_iono_train_data_cross_entropy = transpose(reshape(plot_iono_train_data_cross_entropy,  11, 50));
+plot(reshaped_plot_iono_train_data_cross_entropy);
+title('cross-entropy from 1-50 iterations for training data for ionosphere data');
+xlabel('iterations');
+ylabel('cross-entropy');
+legend('lambda = 0', 'lambda = 0.05', 'lambda = 0.1', 'lambda = 0.15', 'lambda = 0.2', 'lambda = 0.25', 'lambda = 0.3', 'lambda = 0.35', 'lambda = 0.4', 'lambda = 0.45', 'lambda = 0.5');
 saveas(h, filename);
 
 
-
-
-
 %%%%%%%%%%%%%%%%%%%% (7) %%%%%%%%%%%%%%%%%%%%%%
+
+
 
 
 %%%%%%%%%%%%%%%%%%%% (8) %%%%%%%%%%%%%%%%%%%%%%

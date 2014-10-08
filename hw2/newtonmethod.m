@@ -11,6 +11,8 @@ new_test_data = [ones(size(test_data, 1),1) test_data];
 lambda = 0:0.05:0.5;
 T = 1:1:50;
 sigma = 1./(ones(size(train_label,1),1)+ exp(-(new_train_data * [b; w])));
+sigma(sigma>1-10^(-16)) = 1-10^(-16);
+sigma(sigma<10^(-16)) = 10^(-16);
 
 
 % run
