@@ -1,5 +1,12 @@
-sum_tp = sum(train_data_TP);
-sum_tn = sum(train_data_TN);
-sum_all = sum_tp + sum_tn;
-[sort_sum_all, sort_sum_all_index] = sort(sum_all);
+function [] = main()
 
+%
+% CSCI 567 hw2
+% usage: main()
+%
+
+[spam_train_data, spam_train_label, spam_test_data, spam_test_label]=loadfile('spam');
+[iono_train_data, iono_train_label, iono_test_data, iono_test_label]=loadfile('iono');
+
+% 5.2
+loadheader();
