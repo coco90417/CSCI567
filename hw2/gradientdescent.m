@@ -30,8 +30,8 @@ for k = 1:size(T,2)
     sigma_test(sigma_test>1-10^(-16)) = 1-10^(-16);
     sigma_train(sigma_train<10^(-16)) = 10^(-16);
     sigma_test(sigma_test<10^(-16)) = 10^(-16);
-    train_data_cross_entropy(i, j, k) = -(transpose(train_label) * log(sigma_train) + transpose(ones(size(train_label,1),1)-train_label) * log(ones(size(train_label,2),1)-sigma_train)) + 2*lambda(i)*norm(w)^2;
-    test_data_cross_entropy(i, j, k) = transpose(test_label) * log(sigma_test) + transpose(ones(size(test_label,1),1)-test_label) * log(ones(size(train_label,2),1)-sigma_test) + 2*lambda(i)*norm(w)^2;
+    train_data_cross_entropy(i, j, k) = -(transpose(train_label) * log(sigma_train) + transpose(ones(size(train_label,1),1)-train_label) * log(ones(size(train_label,2),1)-sigma_train)) + lambda(i)*norm(w)^2;
+    test_data_cross_entropy(i, j, k) = transpose(test_label) * log(sigma_test) + transpose(ones(size(test_label,1),1)-test_label) * log(ones(size(train_label,2),1)-sigma_test) + lambda(i)*norm(w)^2;
     l2norm(i, j, k) = norm(w);
 end
 end
