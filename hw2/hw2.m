@@ -14,7 +14,7 @@ disp('1')
 loadheader();
 
 %%%%%%%%%%%%%%%%%%%% (3) %%%%%%%%%%%%%%%%%%%%%%
-
+[train_data_cross_entropy, test_data_cross_entropy, l2norm] = gradiandescent(spam_train_data, spam_train_label, spam_test_data, spam_test_label);
 
 
 %%%%%%%%%%%%%%%%%%%% (4) %%%%%%%%%%%%%%%%%%%%%%
