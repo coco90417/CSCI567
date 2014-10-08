@@ -1,4 +1,4 @@
-function[train_data_cross_entropy, test_data_cross_entropy, l2norm] = gradiandescent(train_data, train_label, test_data, test_label)
+function[train_data_cross_entropy, test_data_cross_entropy, l2norm] = gradientdescent(train_data, train_label, test_data, test_label)
 
 % train_data_cross_entropy, test_data_cross_entropy: 3d matrix (lambda, stepsize, T)
 % l2norm: 3d matrix
