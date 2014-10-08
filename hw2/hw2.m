@@ -11,7 +11,7 @@ function [] = main()
 %%%%%%%%%%%%%%%%%%%% (1) %%%%%%%%%%%%%%%%%%%%%%
 disp('5.2')
 disp('1')
-loadheader();
+loadheader(spam_train_data);
 
 %%%%%%%%%%%%%%%%%%%% (3) %%%%%%%%%%%%%%%%%%%%%%
 [train_data_cross_entropy, test_data_cross_entropy, l2norm] = gradiendescent(spam_train_data, spam_train_label, spam_test_data, spam_test_label);
