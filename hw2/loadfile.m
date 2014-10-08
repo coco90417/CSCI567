@@ -3,12 +3,15 @@ function[train_data, train_label, test_data, test_label] = loadfile(k)
 % load files
 
 if k = 'ionosphere'
+formatSpec = '%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%f%*s%*[\n]';
 train_filename = './hw2_data/ionosphere/ionosphere_train.dat';
-train_data = textread(train_filename, '', 'deliminter', ',');
+fid=fopen(train_filename, 'r');
+train_data = textscan(fid, formatSpec, 'delimiter', ',');
+fclose(fid);
 train_data=train_data(:,1:34);
 train_label = train_data(:,35);
 test_filename = './hw2_data/ionosphere/ionosphere_test.dat';
-test_data = textread(test_filename, '', 'deliminter', ',');
+test_data = importdata(test_filename, ',');
 test_data= test_data(:,1:34);
 test_label = test_data(:,35);
 
