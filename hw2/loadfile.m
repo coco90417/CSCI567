@@ -4,10 +4,11 @@ function[train_data, train_label, test_data, test_label] = loadfile(k)
 
 if k = 'ionosphere'
 train_filename = './hw2_data/ionosphere/ionosphere_train.dat';
-train_data = csvread(train_filename);
+train_data = textread(train_filename, '', 'deliminter', ',');
 train_data=train_data(:,1:34);
 train_label = train_data(:,35);
 test_filename = './hw2_data/ionosphere/ionosphere_test.dat';
+test_data = textread(test_filename, '', 'deliminter', ',');
 test_data= test_data(:,1:34);
 test_label = test_data(:,35);
 
