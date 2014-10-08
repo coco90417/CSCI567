@@ -2,7 +2,7 @@ function[train_data, train_label, test_data, test_label] = loadfile(k)
 
 % load files
 
-if k = 'spam'
+if k == 'spam'
 train_data_file_TP = 'hw2_data/spam/train/spam/train_spam.final';
 train_data_TP = importdata(train_data_file_TP);
 train_data_file_TN = 'hw2_data/spam/train/ham/train_ham.final';
