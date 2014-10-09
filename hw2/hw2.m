@@ -24,7 +24,7 @@ disp('a. figure')
 
 filename = '3a_spam.pdf';
 h = figure;
-plot_spam_train_data_cross_entropy = spam_train_data_cross_entropy(1,:,:);
+plot_spam_train_data_cross_entropy = spam_train_data_cross_entropy(:,:,1);
 reshaped_plot_spam_train_data_cross_entropy = transpose(reshape(plot_spam_train_data_cross_entropy,  5, 50));
 plot(reshaped_plot_spam_train_data_cross_entropy);
 title('cross-entropy from 1-50 iterations for training data for spam data(no regularization)');
