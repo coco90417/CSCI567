@@ -40,6 +40,6 @@ nt_test_data_cross_entropy(i, k) = -(transpose(test_label) * log(sigma_test) + t
 nt_l2norm(i, k) = norm(w);
 end
 end
-clear nt_train_data_cross_entropy nt_test_data_cross_entropy nt_l2norm;
+
 
 
