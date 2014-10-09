@@ -40,8 +40,9 @@ sigma(sigma<10^(-16)) = 10^(-16);
 sigma_test(sigma_test<10^(-16)) = 10^(-16);
 sigma_train = sigma;
 train_data_cross_entropy(i, j, k) = -(transpose(train_label) * log(sigma_train) + transpose(1-train_label) * log(1-sigma_train)) + lambda(i)*norm(w)^2;
-test_data_cross_entropy(i, j, k) = -(transpose(test_label) * log(sigma_test) + transpose(ones(size(test_label,1),1)-test_label) * log(ones(size(test_label,1),1)-sigma_test)) + lambda(i)*norm(w)^2;
+test_data_cross_entropy(i, j, k) = -(transpose(test_label) * log(sigma_test) + transpose(ones(size(test_label,1),1)-test_label) * log(1-sigma_test)) + lambda(i)*norm(w)^2;
 l2norm(i, j, k) = norm(w);
+
 end
 
 if i == 2 & j == 2
