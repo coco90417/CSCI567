@@ -35,7 +35,7 @@ saveas(h, filename);
 
 filename = '3a_iono.pdf';
 h = figure;
-plot_iono_train_data_cross_entropy = iono_train_data_cross_entropy(1,:,:);
+plot_iono_train_data_cross_entropy = iono_train_data_cross_entropy(:,:,1);
 reshaped_plot_iono_train_data_cross_entropy = transpose(reshape(plot_iono_train_data_cross_entropy,   5, 50));
 plot(reshaped_plot_iono_train_data_cross_entropy);
 title('cross-entropy from 1-50 iterations for training data for ionosphere data(no regularization)');
@@ -48,10 +48,10 @@ saveas(h, filename);
 %%%%%%%%%% 3.b
 disp('b. l2 norm')
 disp('spam data')
-show_spam_l2norm = spam_l2norm(1,:,50);
+show_spam_l2norm = spam_l2norm(:,50,1);
 show_spam_l2norm
 disp('ionophere data')
-show_iono_l2norm = iono_l2norm(1,:,50);
+show_iono_l2norm = iono_l2norm(:,50,1);
 show_iono_l2norm
 
 
@@ -63,7 +63,7 @@ disp('4')
 disp('a. figure')
 filename = '4a_spam.pdf';
 h = figure;
-plot_spam_train_data_cross_entropy = spam_train_data_cross_entropy(3,:,:);
+plot_spam_train_data_cross_entropy = spam_train_data_cross_entropy(:,:,3);
 reshaped_plot_spam_train_data_cross_entropy = transpose(reshape(plot_spam_train_data_cross_entropy,  5, 50));
 plot(reshaped_plot_spam_train_data_cross_entropy);
 title('cross-entropy from 1-50 iterations for training data for spamsphere data(lamda=0.1)');
@@ -74,7 +74,7 @@ saveas(h, filename);
 
 filename = '4a_iono.pdf';
 h = figure;
-plot_iono_train_data_cross_entropy = iono_train_data_cross_entropy(3,:,:);
+plot_iono_train_data_cross_entropy = iono_train_data_cross_entropy(:,:,3);
 reshaped_plot_iono_train_data_cross_entropy = transpose(reshape(plot_iono_train_data_cross_entropy,  5, 50));
 plot(reshaped_plot_iono_train_data_cross_entropy);
 title('cross-entropy from 1-50 iterations for training data for ionosphere data(lamda=0.1)');
@@ -87,19 +87,19 @@ saveas(h, filename);
 %%%%%%%%%% 4.b
 disp('b. l2 norm')
 disp('spam data')
-show_spam_l2norm = spam_l2norm(:,2,50);
-show_spam_l2norm
+show_spam_l2norm = spam_l2norm(2,50,:);
+transpose(reshape(show_spam_l2norm,  1, 11))
 disp('ionophere data')
-show_iono_l2norm = iono_l2norm(:,2,50);
-show_iono_l2norm
+show_iono_l2norm = iono_l2norm(2,50,:);
+transpose(reshape(show_iono_l2norm,  1, 11))
 
 
 %%%%%%%%%% 4.c
 disp('c. figure')
 filename = '4c1_spam.pdf';
 h = figure;
-plot_spam_data_cross_entropy = [spam_train_data_cross_entropy(:,1,50) spam_test_data_cross_entropy(:,1,50)];
-reshaped_plot_spam_data_cross_entropy = transpose(reshape(plot_spam_data_cross_entropy,  11, 2));
+plot_spam_data_cross_entropy = [spam_train_data_cross_entropy(1,50,:) spam_test_data_cross_entropy(1,50,:)];
+reshaped_plot_spam_data_cross_entropy = reshape(plot_spam_data_cross_entropy,  2, 11);
 plot(lambda, reshaped_plot_spam_data_cross_entropy(1,:), lambda, reshaped_plot_spam_data_cross_entropy(2,:));
 title('cross-entropy with lambda at 50th iteration for spam data(stepsize=0.001)');
 xlabel('lambda');
@@ -109,8 +109,8 @@ saveas(h, filename);
 
 filename = '4c2_spam.pdf';
 h = figure;
-plot_spam_data_cross_entropy = [spam_train_data_cross_entropy(:,2,50) spam_test_data_cross_entropy(:,2,50)];
-reshaped_plot_spam_data_cross_entropy = transpose(reshape(plot_spam_data_cross_entropy,  11, 2));
+plot_spam_data_cross_entropy = [spam_train_data_cross_entropy(2,50,:) spam_test_data_cross_entropy(2,50,:)];
+reshaped_plot_spam_data_cross_entropy = reshape(plot_spam_data_cross_entropy,  2, 11);
 plot(lambda, reshaped_plot_spam_data_cross_entropy(1,:), lambda, reshaped_plot_spam_data_cross_entropy(2,:));
 title('cross-entropy with lambda at 50th iteration for spam data(stepsize=0.01)');
 xlabel('lambda');
@@ -120,8 +120,8 @@ saveas(h, filename);
 
 filename = '4c3_spam.pdf';
 h = figure;
-plot_spam_data_cross_entropy = [spam_train_data_cross_entropy(:,3,50) spam_test_data_cross_entropy(:,3,50)];
-reshaped_plot_spam_data_cross_entropy = transpose(reshape(plot_spam_data_cross_entropy,  11, 2));
+plot_spam_data_cross_entropy = [spam_train_data_cross_entropy(3,50,:) spam_test_data_cross_entropy(3,50,:)];
+reshaped_plot_spam_data_cross_entropy = reshape(plot_spam_data_cross_entropy,  2, 11);
 plot(lambda, reshaped_plot_spam_data_cross_entropy(1,:), lambda, reshaped_plot_spam_data_cross_entropy(2,:));
 title('cross-entropy with lambda at 50th iteration for spam data(stepsize=0.05)');
 xlabel('lambda');
@@ -129,10 +129,11 @@ ylabel('cross-entropy');
 legend('training', 'testing');
 saveas(h, filename);
 
+
 filename = '4c4_spam.pdf';
 h = figure;
-plot_spam_data_cross_entropy = [spam_train_data_cross_entropy(:,4,50) spam_test_data_cross_entropy(:,4,50)];
-reshaped_plot_spam_data_cross_entropy = transpose(reshape(plot_spam_data_cross_entropy,  11, 2));
+plot_spam_data_cross_entropy = [spam_train_data_cross_entropy(4,50,:) spam_test_data_cross_entropy(4,50,:)];
+reshaped_plot_spam_data_cross_entropy = reshape(plot_spam_data_cross_entropy,  2, 11);
 plot(lambda, reshaped_plot_spam_data_cross_entropy(1,:), lambda, reshaped_plot_spam_data_cross_entropy(2,:));
 title('cross-entropy with lambda at 50th iteration for spam data(stepsize=0.1)');
 xlabel('lambda');
@@ -140,10 +141,11 @@ ylabel('cross-entropy');
 legend('training', 'testing');
 saveas(h, filename);
 
+
 filename = '4c5_spam.pdf';
 h = figure;
-plot_spam_data_cross_entropy = [spam_train_data_cross_entropy(:,5,50) spam_test_data_cross_entropy(:,5,50)];
-reshaped_plot_spam_data_cross_entropy = transpose(reshape(plot_spam_data_cross_entropy,  11, 2));
+plot_spam_data_cross_entropy = [spam_train_data_cross_entropy(5,50,:) spam_test_data_cross_entropy(5,50,:)];
+reshaped_plot_spam_data_cross_entropy = reshape(plot_spam_data_cross_entropy,  2, 11);
 plot(lambda, reshaped_plot_spam_data_cross_entropy(1,:), lambda, reshaped_plot_spam_data_cross_entropy(2,:));
 title('cross-entropy with lambda at 50th iteration for spam data(stepsize=0.5)');
 xlabel('lambda');
@@ -153,8 +155,8 @@ saveas(h, filename);
 
 filename = '4c1_iono.pdf';
 h = figure;
-plot_iono_data_cross_entropy = [iono_train_data_cross_entropy(:,1,50) iono_test_data_cross_entropy(:,1,50)];
-reshaped_plot_iono_data_cross_entropy = transpose(reshape(plot_iono_data_cross_entropy,  11, 2));
+plot_iono_data_cross_entropy = [iono_train_data_cross_entropy(1,50,:) iono_test_data_cross_entropy(1,50,:)];
+reshaped_plot_iono_data_cross_entropy = reshape(plot_iono_data_cross_entropy,  2, 11);
 plot(lambda, reshaped_plot_iono_data_cross_entropy(1,:), lambda, reshaped_plot_iono_data_cross_entropy(2,:));
 title('cross-entropy with lambda at 50th iteration for iono data(stepsize=0.001)');
 xlabel('lambda');
@@ -164,8 +166,8 @@ saveas(h, filename);
 
 filename = '4c2_iono.pdf';
 h = figure;
-plot_iono_data_cross_entropy = [iono_train_data_cross_entropy(:,2,50) iono_test_data_cross_entropy(:,2,50)];
-reshaped_plot_iono_data_cross_entropy = transpose(reshape(plot_iono_data_cross_entropy,  11, 2));
+plot_iono_data_cross_entropy = [iono_train_data_cross_entropy(2,50,:) iono_test_data_cross_entropy(2,50,:)];
+reshaped_plot_iono_data_cross_entropy = reshape(plot_iono_data_cross_entropy,  2, 11);
 plot(lambda, reshaped_plot_iono_data_cross_entropy(1,:), lambda, reshaped_plot_iono_data_cross_entropy(2,:));
 title('cross-entropy with lambda at 50th iteration for iono data(stepsize=0.01)');
 xlabel('lambda');
@@ -175,8 +177,8 @@ saveas(h, filename);
 
 filename = '4c3_iono.pdf';
 h = figure;
-plot_iono_data_cross_entropy = [iono_train_data_cross_entropy(:,3,50) iono_test_data_cross_entropy(:,3,50)];
-reshaped_plot_iono_data_cross_entropy = transpose(reshape(plot_iono_data_cross_entropy,  11, 2));
+plot_iono_data_cross_entropy = [iono_train_data_cross_entropy(3,50,:) iono_test_data_cross_entropy(3,50,:)];
+reshaped_plot_iono_data_cross_entropy = reshape(plot_iono_data_cross_entropy,  2, 11);
 plot(lambda, reshaped_plot_iono_data_cross_entropy(1,:), lambda, reshaped_plot_iono_data_cross_entropy(2,:));
 title('cross-entropy with lambda at 50th iteration for iono data(stepsize=0.05)');
 xlabel('lambda');
@@ -184,10 +186,11 @@ ylabel('cross-entropy');
 legend('training', 'testing');
 saveas(h, filename);
 
+
 filename = '4c4_iono.pdf';
 h = figure;
-plot_iono_data_cross_entropy = [iono_train_data_cross_entropy(:,4,50) iono_test_data_cross_entropy(:,4,50)];
-reshaped_plot_iono_data_cross_entropy = transpose(reshape(plot_iono_data_cross_entropy,  11, 2));
+plot_iono_data_cross_entropy = [iono_train_data_cross_entropy(4,50,:) iono_test_data_cross_entropy(4,50,:)];
+reshaped_plot_iono_data_cross_entropy = reshape(plot_iono_data_cross_entropy,  2, 11);
 plot(lambda, reshaped_plot_iono_data_cross_entropy(1,:), lambda, reshaped_plot_iono_data_cross_entropy(2,:));
 title('cross-entropy with lambda at 50th iteration for iono data(stepsize=0.1)');
 xlabel('lambda');
@@ -195,10 +198,11 @@ ylabel('cross-entropy');
 legend('training', 'testing');
 saveas(h, filename);
 
+
 filename = '4c5_iono.pdf';
 h = figure;
-plot_iono_data_cross_entropy = [iono_train_data_cross_entropy(:,5,50) iono_test_data_cross_entropy(:,5,50)];
-reshaped_plot_iono_data_cross_entropy = transpose(reshape(plot_iono_data_cross_entropy,  11, 2));
+plot_iono_data_cross_entropy = [iono_train_data_cross_entropy(5,50,:) iono_test_data_cross_entropy(5,50,:)];
+reshaped_plot_iono_data_cross_entropy = reshape(plot_iono_data_cross_entropy,  2, 11);
 plot(lambda, reshaped_plot_iono_data_cross_entropy(1,:), lambda, reshaped_plot_iono_data_cross_entropy(2,:));
 title('cross-entropy with lambda at 50th iteration for iono data(stepsize=0.5)');
 xlabel('lambda');
