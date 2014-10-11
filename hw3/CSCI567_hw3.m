@@ -1,4 +1,4 @@
-[train_data, train_label, test_data, test_label] = loadfile()
+[train_data, train_label, test_data, test_label] = loadfile();
 
 % load files
 train_data_file = 'splice_test.mat';
