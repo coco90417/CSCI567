@@ -11,3 +11,9 @@ function accu = testsvm(test_data, test_label, w, b)
 %  accu: test accuracy (between [0, 1])
 %
 % CSCI 576 2014 Fall, Homework 3
+
+[m n] = size(test_data);
+pred = sign([test_data ones(m,1)]* [w; b]);
+
+accu = (m - sum(abs(pred-test_label))/2)/m;
+
