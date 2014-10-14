@@ -19,7 +19,7 @@ f = [zeros(m+1,1); C*ones(n,1)];
 
 partOneA = - repmat([train_label]', n+1, 1)'  .* [train_data ones(m,1)];
 partTwoA = - eye(m);
-partThreeA = zeros(1000,61);
+partThreeA = zeros(m,n+1);
                     
 A = [partOneA partTwoA; partThreeA partTwoA];
 b = -[ones(m,1); zeros(m,1)];
