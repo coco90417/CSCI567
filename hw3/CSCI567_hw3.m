@@ -21,15 +21,19 @@ temp_train_label = train_label(train);
 temp_test_data = train_data(test,:);
 temp_test_label = train_label(test);
 [temp_w temp_b] = trainsvm(temp_train_data,temp_train_label, cost(i));
-temp_accuracy(j) = testsvm(temp_test_data,temp_test_label, temp_w, temp_b);
+temp_accuracy(j) = testsvm(temp_test_data,temp_test_label, temp_w, temp_b)
 end
 
 tempclock = clock();
 endtime  = tempclock(5) * 60 + tempclock(6);
 second = endtime  - starttime ;
-average_time(i) = second/5;
-accuracy(i) = sum(temp_accuracy)/5;
+average_time(i) = second/5
+accuracy(i) = sum(temp_accuracy)/5
 end
+
+% Usr linear SVM with c = 4^(-2)
+[final_w, final_b] = trainsvm(train_data,train_label, cost(5));
+final_accuracy = testsvm(test_data,test_label, final_w, final_b);
  
 % Use linear SVM in LIBSVM
 model = zeros(9,1);
@@ -236,5 +240,11 @@ second = endtime  - starttime ;
  tempclock = clock();
  endtime  = tempclock(5) * 60 + tempclock(6);
  second = endtime  - starttime ;
+
+
+% final implementation
+final_model = svmtrain(train_label, train_data, '-t 1 -c 4^(-2) -d 3');
+[predict_label, libsvm_accuracy, dec_values] = svmpredict(test_label, test_data, final_model);
+
  
  
