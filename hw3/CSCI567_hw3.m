@@ -20,13 +20,13 @@ temp_train_label = train_label(train);
 temp_test_data = train_data(test,:);
 temp_test_label = train_label(test);
 [temp_w temp_b] = trainsvm(temp_train_data,temp_train_label, cost(i));
-temp_accuracy(j) = testsvm(temp_test_data,temp_test_label, temp_w, temp_b)
+temp_accuracy(j) = testsvm(temp_test_data,temp_test_label, temp_w, temp_b);
 end
 tempclock = clock();
 endtime  = tempclock(4) * 3600 + tempclock(5) * 60 + tempclock(6);
 second = endtime  - starttime ;
-average_time(i) = second/5
-accuracy(i) = sum(temp_accuracy)/5
+average_time(i) = second/5;
+accuracy(i) = sum(temp_accuracy)/5;
 end
 
 disp('linear SVM implementation')
