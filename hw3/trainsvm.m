@@ -25,8 +25,8 @@ partThreeA = zeros(m,n+1);
                     
 A = [partOneA partTwoA; partThreeA partTwoA];
 b = -[ones(m,1); zeros(m,1)];
-                    
-[x,fval,exitflag,output,lambda] = quadprog(H,f,A,b,[],[],[],[],[],opts);
+lb = -[inf(m+1,1); zeros(n,1)];
+[x,fval,exitflag,output,lambda] = quadprog(H,f,A,b,[],[],lb,[],[],opts);
                     
 w = x(1:n);
 b = x(n+1);
