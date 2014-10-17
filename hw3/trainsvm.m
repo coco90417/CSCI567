@@ -14,19 +14,14 @@ function [w,b] = trainsvm(train_data, train_label, C)
 
 [m, n] = size(train_data);
 
-H = diag([ones(n,1); zeros(m+1,1)]);
-f = [zeros(m+1,1); C*ones(n,1)];
-
-
 opts = optimoptions('quadprog', 'Algorithm', 'interior-point-convex','Display','off');
-partOneA = - repmat([train_label]', n+1, 1)'  .* [train_data ones(m,1)];
-partTwoA = - eye(m);
+H = diag([ones(n,1); zeros(m+1,1)]);
+f = [zeros(n+1,1); C*ones(m,1)];
+A = -[repmat([train_label], 1, n+1) .* [train_data, ones(m,1)], eye(m)];
+b = -ones(m,1);
+lb = -[inf(n+1,1); zeros(m,1)];
                     
-A = [partOneA partTwoA];
-b = -[ones(m,1)];
-lb = -[inf(m+1,1); zeros(n,1)];
-                    
-[x,fval,exitflag,output,lambda] = quadprog(H,f,A,b,[],[],lb,[],[],opts);
+[x,fval,exitflag,output,lambda] = quadprog(H, f, A, b, [], [], lb, [], [], opts);
                     
 w = x(1:n);
 b = x(n+1);

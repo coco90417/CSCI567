@@ -14,7 +14,8 @@ starttime = tempclock(4) * 3600 + tempclock(5) * 60 + tempclock(6);
 temp_accuracy = zeros(5,1);
 indices = crossvalind('Kfold',train_label,5);
 for j = 1:5
-test = (indices == j); train = ~test;
+test = (indices == j);
+train = ~test;
 temp_train_data = train_data(train,:);
 temp_train_label = train_label(train);
 temp_test_data = train_data(test,:);
