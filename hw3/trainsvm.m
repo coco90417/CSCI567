@@ -17,6 +17,8 @@ function [w,b] = trainsvm(train_data, train_label, C)
 H = diag([ones(n,1); zeros(m+1,1)]);
 f = [zeros(m+1,1); C*ones(n,1)];
 
+iteration = 200;
+opts = optimset('Algorithm', 'interior-point-convex','MaxIter',iteration, 'Display','off');
 partOneA = - repmat([train_label]', n+1, 1)'  .* [train_data ones(m,1)];
 partTwoA = - eye(m);
 partThreeA = zeros(m,n+1);
