@@ -18,16 +18,16 @@ H = diag([ones(n,1); zeros(m+1,1)]);
 f = [zeros(m+1,1); C*ones(n,1)];
 
 
-
+opts = optimset('Algorithm', 'interior-point-convex','MaxIter',iteration, 'Display','off');
 partOneA = - repmat([train_label]', n+1, 1)'  .* [train_data ones(m,1)];
 partTwoA = - eye(m);
 partThreeA = zeros(m,n+1);
                     
-A = [partOneA partTwoA; partThreeA partTwoA];
-b = -[ones(m,1); zeros(m,1)];
-lb = -[inf(m+1,1); zeros(n,1)];
+A = [partOneA partTwoA];
+b = -ones(m,1);
+lb = -[inf(n+1,1); zeros(m,1)];
                     
-[x,fval,exitflag,output,lambda] = quadprog(H,f,A,b,[],[],lb);
+[x,fval,exitflag,output,lambda] = quadprog(H,f,A,b,[],[],lb,[],[],opts);
                     
 w = x(1:n);
 b = x(n+1);
