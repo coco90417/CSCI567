@@ -24,7 +24,7 @@ partThreeA = zeros(m,n+1);
 A = [partOneA partTwoA; partThreeA partTwoA];
 b = -[ones(m,1); zeros(m,1)];
                     
-opts = optimoptions('quadprog','Algorithm','Display','off');
+opts = optimoptions('quadprog','Display','off');
                     
 [x,fval,exitflag,output,lambda] = quadprog(H,f,A,b,[],[],[],[],[],opts);
                     
