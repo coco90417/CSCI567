@@ -18,10 +18,9 @@ H = diag([ones(n,1); zeros(m+1,1)]);
 f = [zeros(m+1,1); C*ones(n,1)];
 
 
-opts = optimset('Algorithm', 'interior-point-convex', 'Display','off');
+opts = optimset('quadprog','Algorithm', 'interior-point-convex', 'Display','off');
 partOneA = - repmat([train_label]', n+1, 1)'  .* [train_data ones(m,1)];
 partTwoA = - eye(m);
-partThreeA = zeros(m,n+1);
                     
 A = [partOneA partTwoA];
 b = -ones(m,1);
