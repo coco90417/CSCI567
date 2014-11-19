@@ -7,7 +7,7 @@
 % k = 2, 3, 5
 disp('5.2 (a)')
 k_vector = [2,3,5];
-maxiteration = 10000000000;
+maxiteration = 200;
 for i=1:3
 [output_label, cost_vector] = kmeans(train_data, train_label, k_vector(i), maxiteration);
 name = strcat('scatter plot of k means clustering with k= ', num2str(k_vector(i)));
@@ -23,7 +23,14 @@ k = 4;
 maxiteration = 50;
 for i=1:5
 [output_label, cost_vector] = kmeans(train_data, train_label, k, maxiteration);
-name = strcat('cost of k means clustering with k=5 time=', num2str(i));
-filename = strcat('question2_', num2str(i), '.pdf');
-plotcost(cost_vector);
+cost(i,1:50) = cost_vector;
+end
+filename = 'question2.pdf';
+h=figure;
+plot(cost);
+title('cost of k means clustering with k=5 for five random initiations');
+xlabel='iteration';
+ylabel='cost';
+legend('1st time','2nd time','3rd time','4th time','5th time');
+save(h, filename);
 

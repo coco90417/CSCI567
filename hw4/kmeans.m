@@ -6,9 +6,16 @@ iteration=0;
 output_label = zeros(m, 1);
 class = train_label;
 
-while((1-isequal(class, output_label)) & (iteration < maxiteration))
+while(iteration < maxiteration)
 iteration=iteration+1;
+
+if(iteration == 1)
 cost_vector(iteration) = 0;
+else
+cost_vector(iteration) = cost_vector(iteration-1);
+end
+
+while(1-isequal(class, output_label)))
 class = output_label;
 for i = 1:m
 observation = train_data(i, :);
@@ -29,5 +36,6 @@ index = output_label(i);
 cost_vector(iteration) = cost_vector(iteration) + sum((observation-mu(index,:)).^2, 2);
 end
 
+end
 end
 
