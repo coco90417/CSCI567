@@ -32,5 +32,5 @@ title('cost of k means clustering with k=5 for five random initiations');
 xlabel='iteration';
 ylabel='cost';
 legend('1st time','2nd time','3rd time','4th time','5th time');
-save(h, filename);
+saveas(h, filename);
 
