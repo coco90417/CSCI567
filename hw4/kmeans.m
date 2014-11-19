@@ -15,7 +15,7 @@ else
 cost_vector(iteration) = cost_vector(iteration-1);
 end
 
-while(1-isequal(class, output_label)))
+while(1-isequal(class, output_label))
 class = output_label;
 for i = 1:m
 observation = train_data(i, :);
