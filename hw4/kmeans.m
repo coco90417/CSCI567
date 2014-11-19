@@ -13,7 +13,7 @@ mu = new_mu;
 end
 for i = 1:m
 observation = train_data(i, 2:3);
-three_observation = repmat(observation, 3, 1);
+three_observation = repmat(observation, k, 1);
 distance = dot((three_observation-mu)',(three_observation-mu)');
 [min_distance, index] = min(distance);
 train_data(i, 1) = index;
