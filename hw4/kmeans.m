@@ -13,12 +13,15 @@ mu = new_mu;
 end
 for i = 1:m
 observation = train_data(i, 2:3);
-three_observation = repmat(observation, k, 1);
-distance = dot((three_observation-mu)',(three_observation-mu)');
+copy_observation = repmat(observation, k, 1);
+distance = dot((copy_observation-mu)',(copy_observation-mu)');
 [min_distance, index] = min(distance);
 train_data(i, 1) = index;
 end
-[new_mu] = grpstats(train_data(:,2:3), train_data(:,1));
+
+for i = 1:k
+new_mu(i,1:2) = sum(train_data(train_data(:,1)==i, 2:3))/sum(train_data(train_data(:,1)==i));
+end
 
 for i = 1:m
 observation = train_data(i, 2:3);
