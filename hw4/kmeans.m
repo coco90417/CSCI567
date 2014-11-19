@@ -12,7 +12,7 @@ class = train_data(:,1);
 for i = 1:m
 observation = train_data(i, 2:3);
 copy_observation = repmat(observation, k, 1);
-distance = dot((copy_observation-mu)',(copy_observation-mu)');
+distance = sum((copy_observation-mu).^2, 2);
 [min_distance, index] = min(distance);
 train_data(i, 1) = index;
 end
