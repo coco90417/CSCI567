@@ -5,7 +5,7 @@ mu = rand(k,n-1);
 iteration=0;
 class = zeros(m, 1);
 
-while(class ~= train_data(:,1))
+while(sum(class-train_data(:,1)) ~= 0)
 iteration=iteration+1;
 cost_vector(iteration) = 0;
 class = train_data(:,1);
