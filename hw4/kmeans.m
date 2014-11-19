@@ -1,11 +1,11 @@
-function [train_data, cost_vector] = kmeans(train_data, k)
+function [output_label, cost_vector] = kmeans(train_data, train_label, k)
 
 [m n] = size(train_data);
 mu = rand(k,n-1);
 iteration=0;
 class = zeros(m, 1);
 
-while(1-isequal(class, train_data(:,1)))
+while(isequaln(class, output_label))
 iteration=iteration+1;
 cost_vector(iteration) = 0;
 class = train_data(:,1);
