@@ -1,12 +1,12 @@
 function [output_label, cost_vector] = kmeans(train_data, train_label, k)
 
 [m n] = size(train_data);
-mu = rand(k,n-1);
+mu = rand(k,n);
 iteration=0;
 output_label = zeros(m, 1);
 class = train_label;
 
-while(isequaln(class, output_label))
+while(1-isequal(class, output_label))
 iteration=iteration+1;
 cost_vector(iteration) = 0;
 class = output_label;
@@ -15,11 +15,11 @@ observation = train_data(i, :);
 copy_observation = repmat(observation, k, 1);
 distance = sum((copy_observation-mu).^2, 2);
 [min_distance, index] = min(distance);
-output_label = index;
+output_label(i) = index;
 end
 
 for i = 1:k
-mu(i,:) = sum(train_data(output_label==i, :))/sum(output_label==i));
+mu(i,:) = sum(train_data(output_label==i, :))/sum(output_label==i);
 end
 
 for i = 1:m
