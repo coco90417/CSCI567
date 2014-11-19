@@ -1,4 +1,4 @@
-function plotcluster(train_data, output_label name, filename)
+function plotcluster(train_data, output_label, name, filename)
 
 h=figure;
 gscatter(train_data(:,1), train_data(:,2), output_label);
