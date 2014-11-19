@@ -5,7 +5,7 @@ mu = rand(k,n-1);
 iteration=0;
 class = zeros(m, 1);
 
-while(class ~= train_data(:,1))
+while(1-isequal(class, train_data(:,1)))
 iteration=iteration+1;
 cost_vector(iteration) = 0;
 class = train_data(:,1);
@@ -18,7 +18,7 @@ train_data(i, 1) = index;
 end
 
 for i = 1:k
-mu(i,1:2) = sum(train_data(train_data(:,1)==i, 2:3))/sum(train_data(train_data(:,1)==i));
+mu(i,:) = sum(train_data(train_data(:,1)==i, 2:3))/sum(train_data(train_data(:,1)==i));
 end
 
 for i = 1:m
