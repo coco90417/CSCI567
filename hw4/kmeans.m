@@ -20,6 +20,7 @@ end
 
 for i = 1:k
 mu(i,:) = sum(train_data(output_label==i, :))/sum(output_label==i);
+mu(find(isnan(mu))) = rand(1,1);
 end
 
 for i = 1:m
