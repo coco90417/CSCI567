@@ -13,3 +13,8 @@ function eigenvecs = pca_fun(X, d)
 %
 % CSCI 576 2014 Fall, Homework 5
 
+[m,n] = size(X);
+centeredX = X - repmat(mean(X,1),m, 1);
+sigma = 1/m * centeredX' * centeredX;
+[v,D] = eig(sigma);
+eigenvecs = v(:,1:d);
