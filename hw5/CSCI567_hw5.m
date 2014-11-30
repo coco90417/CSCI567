@@ -1,7 +1,7 @@
 % run CSCI567_hw5
 
 % load files
-loadfile();
+[face_data, hmm_data] = loadfile();
 
 % 4.c
 disp("4.c")

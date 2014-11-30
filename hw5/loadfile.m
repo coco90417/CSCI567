@@ -1,8 +1,8 @@
 function[face_data, hmm_data] = loadfile()
 
 % load files
-load('face_data.mat');
-load('hmm_data.mat');
+face_data = load('face_data.mat');
+hmm_data = load('hmm_data.mat');
 
 
 
