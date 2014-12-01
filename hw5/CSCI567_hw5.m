@@ -166,6 +166,18 @@ end
 
 
 
+% 5.c
+disp('5,c')
+A_guess = [0.7 0.3; 0.3 0.7];
+E_guess = [0.25 0.25 0.25 0.25; 0.25 0.25 0.25 0.25];
+N_iter = 500;
+[A_estimate, E_estimate] = baumwelch(data, A_guess, E_guess, N_iter);
+disp('implemented hmm')
+A_estimate
+E_estimate
+disp('result from package')
+hmmtrain(data, A_guess, E_guess)
+
 %{
 me:
     A_estimate
@@ -176,9 +188,11 @@ me:
     B_estimate
     0.0979    0.4303    0.3924    0.0794
     0.3868    0.1023    0.1146    0.3963
+
 hmm:
     
-    
+    0.9249    0.0751
+    0.0844    0.9156
 }
 
 
