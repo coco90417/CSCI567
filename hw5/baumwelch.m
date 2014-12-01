@@ -19,6 +19,7 @@ pi = [0.1 0.9];
 alpha = zeros(6, 2, size(data,1));
 beta = zeros(6, 2, size(data,1));
 
+
 my_N_iter = 1;
 
 while( my_N_iter <= N_iter)
@@ -77,7 +78,7 @@ A_estimate_temp_up = 0;
 A_estimate_temp_down = 0;
 for m = 1:size(data, 1)
 A_estimate_temp_up(m) = sum(alpha(1:5,i,m)*A_guess(i,j).*B_guess(j,data(m,2:6))'.*beta(2:6,j,m));
-A_estimate_temp_down(m) = sum(alpha(1:5,i,m)*beta(i,j,m)./c(1:5,m));
+A_estimate_temp_down(m) = sum(alpha(1:5,i,m).*beta(1:5,i,m)./c(1:5,m));
 end
 A_estimate(i,j) = sum(A_estimate_temp_up)/sum(A_estimate_temp_down);
 end
