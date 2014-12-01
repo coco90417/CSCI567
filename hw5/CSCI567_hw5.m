@@ -1,8 +1,11 @@
 % run CSCI567_hw5
 
+% add path, required for libsvm
+addpath('/home/cocodong/usr/matlab/lib/libsvm-3.18/matlab');
+
 % load files
-face_data = load('face_data.mat');
-hmm_data = load('hmm_data.mat');
+load('face_data.mat');
+load('hmm_data.mat');
 
 % 4.c
 disp('4.c')
@@ -10,15 +13,16 @@ for i = 1:640
 [m n] = size(image{i});
 image_data(i, :) = reshape(image{i}, [], 1);
 end
-d = 4;
+d = 5;
 image_eigenvecs = pca_fun(image_data, d);
 
 for temp_d = 1:d
 filename = strcat('question4c_', num2str(temp_d), '.jpg');
 h = figure;
-one_eigenvec = image_eigenvecs;
+one_eigenvec = image_eigenvecs(:,temp_d);
 final_data = reshape(one_eigenvec, m, n);
-imshow(final_data,filename);
+imshow(final_data,[]);
+saveas(h, filename);
 end
 
 
@@ -29,8 +33,6 @@ cost = [4^(-6) 4^(-5) 4^(-4) 4^(-3) 4^(-2) 4^(-1) 1 4 4^2];
 gamma = [4^(-7) 4^(-6) 4^(-5) 4^(-4) 4^(-3) 4^(-2) 4^(-1)];
 
 
-% add path, required for libsvm
-addpath('/home/cocodong/usr/matlab/lib/libsvm-3.18/matlab');
 
 % d=1
 d = 1
@@ -142,4 +144,26 @@ radial_f = strcat({'-t 2 -c '}, num2str(cost(i)), {' -g '}, num2str(gamma(j)), {
 radial_acc(i,j) = svmtrain(double(new_label), double(new_image_data), radial_f{1});
 end
 end
+
+
+%{
+    linear
+    
+    28.7500   39.6875   73.2812   92.0312   95.0000   96.2500   95.4688   95.3125   94.6875
+    
+    
+    radial
+    28.7500   30.0000   35.4688   43.4375   55.7812   39.6875   24.6875
+    28.7500   30.0000   35.4688   43.4375   55.7812   39.6875   24.6875
+    28.7500   30.0000   35.4688   43.4375   55.7812   39.6875   24.6875
+    28.7500   30.0000   35.4688   43.4375   55.7812   39.6875   24.6875
+    28.7500   30.0000   35.4688   43.4375   55.7812   39.6875   24.6875
+    28.7500   30.0000   35.6250   50.4688   62.8125   39.6875   24.6875
+    28.7500   32.8125   56.2500   79.2188   86.8750   75.6250   39.3750
+    31.8750   56.2500   82.9688   92.9688   92.5000   77.8125   42.3438
+    55.7812   83.7500   93.2812   95.1562   93.4375   78.4375   42.3438
+}
+
+
+
 
