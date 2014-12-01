@@ -14,7 +14,7 @@ function [A_estimate, E_estimate] = baumwelch(data, A_guess, E_guess, N_iter)
 
 
 
-pi = [0.1 0.9];
+pi = [1 0];
 alpha = zeros(6, 2, size(data,1));
 beta = zeros(6, 2, size(data,1));
 

@@ -35,7 +35,7 @@ gamma = [4^(-7) 4^(-6) 4^(-5) 4^(-4) 4^(-3) 4^(-2) 4^(-1)];
 
 
 % d=1
-d = 1
+d = 1;
 image_eigenvecs = pca_fun(image_data, dimension(d));
 new_image_data = image_data * image_eigenvecs;
 new_label = personID';
@@ -47,6 +47,10 @@ radial_f = strcat({'-t 2 -c '}, num2str(cost(i)), {' -g '}, num2str(gamma(j)), {
 radial_acc(i,j) = svmtrain(double(new_label), double(new_image_data), radial_f{1});
 end
 end
+
+disp('d=20')
+linear_acc
+radial_acc
 
 %{
     linear
@@ -67,7 +71,7 @@ end
 
 
 % d=2
-d = 2
+d = 2;
 image_eigenvecs = pca_fun(image_data, dimension(d));
 new_image_data = image_data * image_eigenvecs;
 new_label = personID';
@@ -80,7 +84,9 @@ radial_acc(i,j) = svmtrain(double(new_label), double(new_image_data), radial_f{1
 end
 end
 
-
+disp('d=50')
+linear_acc
+radial_acc
 
 %{
     linear
@@ -100,7 +106,7 @@ end
 
 
 % d=3
-d = 3
+d = 3;
 image_eigenvecs = pca_fun(image_data, dimension(d));
 new_image_data = image_data * image_eigenvecs;
 new_label = personID';
@@ -112,6 +118,10 @@ radial_f = strcat({'-t 2 -c '}, num2str(cost(i)), {' -g '}, num2str(gamma(j)), {
 radial_acc(i,j) = svmtrain(double(new_label), double(new_image_data), radial_f{1});
 end
 end
+
+disp('d=100')
+linear_acc
+radial_acc
 
 %{
     linear
@@ -145,6 +155,9 @@ radial_acc(i,j) = svmtrain(double(new_label), double(new_image_data), radial_f{1
 end
 end
 
+disp('d=200')
+linear_acc
+radial_acc
 
 %{
     linear
@@ -176,7 +189,9 @@ disp('implemented hmm')
 A_estimate
 E_estimate
 disp('result from package')
-hmmtrain(data, A_guess, E_guess)
+[A,E] = hmmtrain(data, A_guess, E_guess);
+A
+E
 
 %{
 me:
@@ -194,6 +209,7 @@ hmm:
     0.9249    0.0751
     0.0844    0.9156
 %}
+
 
 
 
